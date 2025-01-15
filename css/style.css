@@ -1,0 +1,248 @@
+/* GENERAL */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Merriweather', serif;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+/* PENTRU HEADER */
+.logo-container {
+    background-image: url("/assets/banner.png"); /* Background pentru banner - folosit in header */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 20px; /* Pentru spatiere */
+    text-align: center;
+}
+
+.logo-container img.site-logo {
+    max-width: 150px;
+    height: auto;
+}
+
+/* PENTRU NAVBAR */
+.navbar {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center; /* Centreaza continut */
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Wrap pentru ecrane mici  */
+    gap: 20px; /* Spatiere intre elementele copii */
+}
+
+/* Linkuri navbar */
+.custom-navbar-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centreaza linkuri orizontal */
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto; /* Centreaza <ul> in parinte */
+    gap: 15px; /* Spatiere intre linkuri  */
+}
+
+.custom-navbar-links .nav-link {
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.custom-navbar-links .nav-link:hover {
+    color: #248cab;
+}
+
+.custom-navbar-links .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #248cab;
+    transition: width 0.3s ease;
+}
+
+.custom-navbar-links .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Butoane navbar */
+.custom-navbar-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centreaza butoane orizontal */
+    gap: 10px;
+}
+
+.custom-navbar-buttons .btn {
+    font-size: 14px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    border: 2px solid #248cab;
+    color: #248cab;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.custom-navbar-buttons .btn:hover {
+    background-color: #248cab;
+    color: white;
+}
+
+/* Wrapper pentru pagini - contact/newsletter */
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Background folosit la pagina de contact */
+.contact-background {
+    background: url('/assets/contact.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Background folosit la pagina de newsletter */
+.newsletter-background {
+    background: url('/assets/newsletter.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Container pentru continut pagina */
+.page-content-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Wrapper pentru login */
+.login-wrapper {
+    background: url('/assets/background.png') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container pentru login */
+.login-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+}
+
+/* Navbar custom pentru ecrane mici */
+@media (max-width: 768px) {
+    .custom-navbar-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .custom-navbar-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .custom-navbar-links .nav-link {
+        font-size: 14px; /* Marime font mica pentru ecrane mici */
+        padding: 8px 5px;
+    }
+
+    .custom-navbar-buttons .btn {
+        font-size: 12px; /* Marime butoane mai mici pentru ecrane mici */
+    }
+
+    .logo-container img.site-logo {
+        max-width: 120px; /* Logo mai mic */
+    }
+
+    .page-content-container {
+        padding: 20px;
+        max-width: 90%;
+    }
+}
+
+/* Navbar custom pentru ecrane mobil */
+@media (max-width: 480px) {
+    .custom-navbar-links .nav-link {
+        font-size: 12px; /* Font pentru mobil */
+        padding: 6px 4px;
+    }
+
+    .custom-navbar-buttons .btn {
+        font-size: 10px; /* Marime butoane pentru mobil */
+    }
+}
+
+/* Casuta reCAPTCHA */
+.recaptcha-container {
+    display: flex;
+    justify-content: center; /* Centrare orizontala */
+    align-items: center;
+    width: 100%;             /* Latime */
+    margin-bottom: 1rem;     /* Adauga spatiere sub reCAPTCHA */
+}
+
+.mt-4.text-center {
+    display: flex; /* Aliniere tip flexbox */
+    justify-content: center; /* Centrare orizontala */
+    align-items: center;
+    overflow-x: hidden; /* Previne scroll orizontal */
+    padding: 10px; /* Adaugare spatiere */
+}
+
+/* Buton profil */
+.profile-btn {
+    background: none;
+    border: none;
+    color: #212529;
+    padding: 5px 10px;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.profile-btn:hover {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.profile-btn svg {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.dropdown-menu {
+    box-shadow: none;
+    border: 1px solid #dee2e6;
+}

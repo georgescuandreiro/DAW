@@ -1,0 +1,52 @@
+# <IfModule mod_rewrite.c>: Se verifică dacă modulul mod_rewrite este activat pe server.
+# RewriteEngine On: Activează motorul de rescriere (necesar pentru rescrierea URL-urilor).
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Pentru a putea accesa pagini cu sau fara "/"
+# Remove trailing slash if it exists and is not a directory
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [R=301,L]
+
+# Pentru a accesa pagini fara a fi nevoie de extensia .php a fisierelor  
+# Add .php extension if the file without the extension exists
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)/?$ $1.php [L]
+
+# Redirectionare pentru cai specifice ( custom )
+# Redirect specific paths to appropriate PHP files
+RewriteRule ^$ /pages/dashboard [R=301,L]
+RewriteRule ^pages/$ /pages/dashboard [R=301,L]
+RewriteRule ^pages$ /pages/dashboard [R=301,L]
+RewriteRule ^login/?$ /pages/login [R=301,L]
+RewriteRule ^register/?$ /pages/register [R=301,L]
+
+# Blocarea accesului la fisiere inexistente (cod 403 - in loc de cod 404 pentru a masca faptul ca exista fisierul/directorul)
+# Return 403 Forbidden for non-existent files or directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ - [F]
+</IfModule>
+
+# Previne listarea directoarelor
+# Prevent directory listing
+Options -Indexes
+
+#Blocheaza accesul la fisiere sensibile ( de configuratie )
+# Deny access to sensitive files
+<Files ".htaccess">
+    Require all denied
+</Files>
+
+<Files ".env">
+    Require all denied
+</Files>
+
+# Permite accesul la fisiere (publice)
+# Allow access to public files (CSS, JS, images, etc.)
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|otf|eot|webp)$">
+    Require all granted
+</FilesMatch>
